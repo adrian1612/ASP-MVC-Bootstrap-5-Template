@@ -36,7 +36,7 @@ namespace ASP_MVC_Bootstrap_5_Template
                       "~/Content/css/select2-bootstrap-5-theme.min.css",
                       "~/Content/DataTables/css/dataTables.bootstrap5.min.css",
                       "~/Content/fonts/fontawesome-all.min.css",
-                      "~/Content/theme/base/jquery-ui.css",
+                      "~/Content/themes/base/jquery-ui.css",
                       "~/Content/variables.css",
                       "~/Content/site.css"));
         }
