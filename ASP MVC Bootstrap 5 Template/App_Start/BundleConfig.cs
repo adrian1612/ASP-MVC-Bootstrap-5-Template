@@ -10,6 +10,7 @@ namespace ASP_MVC_Bootstrap_5_Template
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery-ui-{version}.js",
                         "~/Scripts/jquery.unobtrusive-ajax.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -35,6 +36,7 @@ namespace ASP_MVC_Bootstrap_5_Template
                       "~/Content/css/select2-bootstrap-5-theme.min.css",
                       "~/Content/DataTables/css/dataTables.bootstrap5.min.css",
                       "~/Content/fonts/fontawesome-all.min.css",
+                      "~/Content/theme/base/jquery-ui.css",
                       "~/Content/variables.css",
                       "~/Content/site.css"));
         }
