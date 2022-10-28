@@ -29,8 +29,9 @@ namespace ASP_MVC_Bootstrap_5_Template
                       "~/Scripts/DataTables/jquery.dataTables.js",
                       "~/Scripts/DataTables/dataTables.bootstrap5.min.js",
                       "~/Scripts/theme.js",
-                      "~/Scripts/scripts.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/tinymce/tinymce.js",
+                      "~/Scripts/scripts.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
