@@ -15,7 +15,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ASP_MVC_Bootstrap_5_Template_v2</RootNamespace>
-    <AssemblyName>ASP MVC Bootstrap 5 Template v2</AssemblyName>
+    <AssemblyName>ASP_MVC_Bootstrap_5_Template_v2</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
