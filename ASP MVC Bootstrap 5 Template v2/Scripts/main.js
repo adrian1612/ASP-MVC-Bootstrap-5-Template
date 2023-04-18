@@ -320,9 +320,11 @@
 
 })();
 
+
 $.each($('.nav-link, a'), function (i, item) {
     if ($(item).attr('href') == location.pathname) {
         $(item).parent('li').parent('ul').addClass('show');
+        $(item).parent('li').parent('ul').siblings('a').removeClass('collapsed');
         $(item).addClass('active');
         $(item).removeClass('collapsed');
     }
