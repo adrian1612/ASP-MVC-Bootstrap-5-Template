@@ -1,4 +1,4 @@
-﻿using AAJdbController;
+﻿using AAJControl;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -7,16 +7,11 @@ using System.Web;
 
 namespace ASP_MVC_Bootstrap_5_Template_v2.Classes
 {
-    public class MasterControl : AAJControl
+    public class MasterControl : DBControl
     {
-        public MasterControl(string ConnectionString) : base(DatabaseType.SQLServer, ConfigurationManager.ConnectionStrings[ConnectionString].ConnectionString)
+        public MasterControl(string ConnectionString) : base(DatabaseType.MSSQL, ConfigurationManager.ConnectionStrings[ConnectionString].ConnectionString)
         {
-            ErrorOccured += MasterControl_ErrorOccured;
-        }
-
-        private void MasterControl_ErrorOccured(ErrorMessage e)
-        {
-            throw new Exception(e.ExceptionMessage);
+            
         }
     }
 }
