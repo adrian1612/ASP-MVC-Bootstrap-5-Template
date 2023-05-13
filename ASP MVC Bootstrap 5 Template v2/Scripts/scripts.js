@@ -51,3 +51,18 @@ function TextEditor(field) {
         promotion: false
     });
 }
+
+function Ajax(url, data, dataType, success) {
+    $.ajax({
+        url: url,
+        data : data,
+        dataType: dataType,
+        beforeSend: function() {
+            $('#spinner').show();
+        },
+        success: success,
+        complete: function () {
+            $('#spinner').hide();
+        }
+    })
+}
