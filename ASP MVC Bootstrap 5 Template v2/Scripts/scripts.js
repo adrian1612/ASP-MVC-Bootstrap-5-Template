@@ -66,3 +66,32 @@ function Ajax(url, data, dataType, success) {
         }
     })
 }
+
+class tableCart {
+    constructor() {
+
+    }
+
+    function InitIndex(i) {
+        $.each($(`#${$(i).attr('id')} tr`), function (i, item) {
+            $.each($(item).find('input, select'), function (o, p) {
+                $(p).attr('name', $(p).attr('name').replace(/\[([\d]+)\]/, `[${i - 1}]`));
+            });
+        });
+    }
+
+    function Add(i) {
+        var getTable = $(i).attr('data-tableTarget');
+        $(`${getTable} tbody`).append(`<tr>${$($(`${getTable} tbody tr`)[0]).html()}</tr>`);
+        InitIndex(getTable);
+    }
+
+    function Remove(i) {
+        var item = $(i).parents('tr')
+        var table = $(i).find('table');
+        if (item.index() != 0) {
+            item.remove();
+            InitIndex(`#${table.attr('id')}`);
+        }
+    }
+}
