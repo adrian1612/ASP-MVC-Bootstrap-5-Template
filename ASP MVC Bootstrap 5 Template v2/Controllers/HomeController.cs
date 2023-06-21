@@ -14,6 +14,11 @@ namespace ASP_MVC_Bootstrap_5_Template_v2.Controllers
             return View();
         }
 
+        public ActionResult RestrictedAccess()
+        {
+            return View();
+        }
+
         //public ActionResult Print(int ID)
         //{
         //    ReportViewer rv = new ReportViewer(); //EXCELOPENXML FOR EXCEL & application/vnd.ms-excel FOR contentType

@@ -806,6 +806,7 @@
     <Content Include="Scripts\tinymce\langs\README.md" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_Login.cshtml" />
+    <Content Include="Views\Home\RestrictedAccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
