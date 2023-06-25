@@ -45,32 +45,31 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
     public class FilterDisplay : FilterAttribute, IAuthorizationFilter
     {
         //Change model according to structure, make sure the model has Role or filtering properties
-        /*tbl_user*/ object session { get { return HttpContext.Current.Session["user"] as /*tbl_user*/ object; } }
+        /*tbl_user*/object session { get { return HttpContext.Current.Session["user"] as /*tbl_user*/ object; } }
 
         //1) Add properties to filter
         public string Add { get; set; } = "";
         public string Edit { get; set; } = "";
         public string Delete { get; set; } = "";
+        public bool DisplayNullProperties { get; set; }
 
-        void FilterCore(FilterDisplay obj)
+        protected void FilterCore(FilterDisplay obj)
         {
             if (obj == null) return;
             string output = string.Empty;
-            var dict = new Dictionary<string[], string>();
+            var list = new List<ObjectProp>();
             //2) Add items here to filter the front-end
-            dict.Add(obj.Add.Split(','), "[data-role='Add']");
-            dict.Add(obj.Edit.Split(','), "[data-role='Edit']");
-            dict.Add(obj.Delete.Split(','), "[data-role='Delete']");
+            list.Add(new ObjectProp(obj.Add, "[data-role='Add']"));
+            list.Add(new ObjectProp(obj.Edit, "[data-role='Edit']"));
+            list.Add(new ObjectProp(obj.Delete, "[data-role='Delete']"));
 
             //Do not touch this!
-            foreach (KeyValuePair<string[], string> col in dict)
+            var items = (from r in list where !(string.IsNullOrEmpty(r.Prop) && obj.DisplayNullProperties) && !r.RoleExist(/*session.Role*/ 1) select r);
+            items.ToList().ForEach(r =>
             {
-                var condition = col.Key.ToList().Exists(f => f.Contains($"{1/*session?.Role*/}"));
-                if (!condition)
-                {
-                    output += $"{col.Value},";
-                }
-            }
+                output += $"{r.Html},";
+            });
+
             if (!string.IsNullOrEmpty(output))
             {
                 string final = $"{output.Substring(0, output.Length - 1)}{{ display: none !important; }}";
@@ -78,10 +77,26 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
             }
         }
 
+        class ObjectProp
+        {
+            public string Prop { get; set; }
+            public string Html { get; set; }
+            public ObjectProp(string Prop, string Html)
+            {
+                this.Prop = Prop;
+                this.Html = Html;
+            }
+
+            public bool RoleExist(object Role)
+            {
+                return Prop.Split(',').ToList().Exists(f => f == $"{Role}");
+            }
+        }
+
         void IAuthorizationFilter.OnAuthorization(AuthorizationContext filterContext)
         {
-            var item = (from a in filterContext.ActionDescriptor.GetCustomAttributes(true) select a).FirstOrDefault();
-            FilterCore((FilterDisplay)item);
+            var item = (from a in filterContext.ActionDescriptor.GetCustomAttributes(true) where a.GetType() == typeof(FilterDisplay) select (FilterDisplay)a).FirstOrDefault();
+            FilterCore(item);
         }
     }
 }
