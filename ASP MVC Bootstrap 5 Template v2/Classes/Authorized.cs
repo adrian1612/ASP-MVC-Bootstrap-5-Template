@@ -59,9 +59,9 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
             string output = string.Empty;
             var list = new List<ObjectProp>();
             //2) Add items here to filter the front-end
-            list.Add(new ObjectProp(obj.Add, "[data-role='Add']"));
-            list.Add(new ObjectProp(obj.Edit, "[data-role='Edit']"));
-            list.Add(new ObjectProp(obj.Delete, "[data-role='Delete']"));
+            list.Add(new ObjectProp(obj.Add, "[aria-action='Add']"));
+            list.Add(new ObjectProp(obj.Edit, "[aria-action='Edit']"));
+            list.Add(new ObjectProp(obj.Delete, "[aria-action='Delete']"));
 
             //Do not touch this!
             var items = (from r in list where !(string.IsNullOrEmpty(r.Prop) && obj.DisplayNullProperties) && !r.RoleExist(/*session.Role*/ 1) select r);
