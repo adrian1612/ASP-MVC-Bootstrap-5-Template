@@ -64,8 +64,8 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
             list.Add(new ObjectProp(obj.Delete, "[aria-action='Delete']"));
 
             //Do not touch this!
-            var items = (from r in list where !(string.IsNullOrEmpty(r.Prop) && obj.DisplayNullProperties) && !r.RoleExist(/*session.Role*/ 1) select r);
-            items.ToList().ForEach(r =>
+            var items = (from r in list where !(string.IsNullOrEmpty(r.Prop) && obj.DisplayNullProperties) && !r.RoleExist(/*session.Role*/ 1) select r).ToList();
+            items.ForEach(r =>
             {
                 output += $"{r.Html},";
             });
@@ -73,8 +73,8 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
             if (!string.IsNullOrEmpty(output))
             {
                 output = output.Substring(0, output.Length - 1);
-                string css = $"<style>{output}{{ display: none !important; }}</style>";
-                string js = $"<script>window.addEventListener('load', function () {{ $(`{output}`).remove(); }})</script>";
+                string css = $"<style id='filtercss'>{output}{{ display: none !important; }}</style>";
+                string js = $"<script id='filterjs'>window.addEventListener('load', function () {{ $(`{output}`).remove(); $(`#filtercss, #filterjs`).remove(); }})</script>";
                 HttpContext.Current.Response.Write($"{css}{js}");
             }
         }
