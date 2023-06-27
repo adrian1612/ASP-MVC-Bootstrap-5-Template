@@ -72,9 +72,10 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
 
             if (!string.IsNullOrEmpty(output))
             {
-                string final = $"{output.Substring(0, output.Length - 1)}{{ display: none !important; }}";
-                HttpContext.Current.Response.Write($"<style>{final}</style>");
-                HttpContext.Current.Response.Write($"<script>window.addEventListener('load', function () {{ $(`{output.Substring(0, output.Length - 1)}`).remove(); }})</script>");
+                output = output.Substring(0, output.Length - 1);
+                string css = $"<style>{output}{{ display: none !important; }}</style>";
+                string js = $"<script>window.addEventListener('load', function () {{ $(`{output}`).remove(); }})</script>";
+                HttpContext.Current.Response.Write($"{css}{js}");
             }
         }
 
