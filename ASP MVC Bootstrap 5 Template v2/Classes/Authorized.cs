@@ -74,6 +74,7 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
             {
                 string final = $"{output.Substring(0, output.Length - 1)}{{ display: none !important; }}";
                 HttpContext.Current.Response.Write($"<style>{final}</style>");
+                HttpContext.Current.Response.Write($"<script>window.addEventListener('load', function () {{ $(`{output.Substring(0, output.Length - 1)}`).remove(); }})</script>");
             }
         }
 
