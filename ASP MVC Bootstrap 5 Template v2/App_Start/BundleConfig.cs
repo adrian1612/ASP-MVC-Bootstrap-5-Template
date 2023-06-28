@@ -29,6 +29,7 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
                       "~/Scripts/DataTables/dataTables.bootstrap5.min.js",
                       "~/Scripts/respond.js",
                       "~/Scripts/tinymce/tinymce.js",
+                      "~/Scripts/fontawesome/all.js",
                       "~/Scripts/main.js",
                       "~/Scripts/scripts.js"));
 
@@ -37,7 +38,7 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
                       "~/Content/css/select2.css",
                       "~/Content/css/select2-bootstrap-5-theme.min.css",
                       "~/Content/DataTables/css/dataTables.bootstrap5.min.css",
-                      "~/Content/fonts/fontawesome-all.min.css",
+                      "~/Content/all.css",
                       "~/Content/themes/base/jquery-ui.css",
                       "~/Content/variables.css",
                       "~/Content/bootstrap-icons/bootstrap-icons.css",

@@ -358,11 +358,16 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\duotone.css" />
+    <Content Include="Content\duotone.min.css" />
+    <Content Include="Content\fontawesome.css" />
     <Content Include="Content\fonts\fa-brands-400.svg" />
     <Content Include="Content\fonts\fa-regular-400.svg" />
     <Content Include="Content\fonts\fa-solid-900.svg" />
     <Content Include="Content\fonts\fontawesome-all.min.css" />
     <Content Include="Content\fontawesome.min.css" />
+    <Content Include="Content\light.css" />
+    <Content Include="Content\light.min.css" />
     <Content Include="Content\regular.css" />
     <Content Include="Content\regular.min.css" />
     <Content Include="Content\solid.css" />
@@ -411,6 +416,8 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\thin.css" />
+    <Content Include="Content\thin.min.css" />
     <Content Include="Content\v4-shims.css" />
     <Content Include="Content\v4-shims.min.css" />
     <Content Include="Content\variables.css" />
@@ -550,12 +557,18 @@
     <Content Include="Scripts\fontawesome\brands.min.js" />
     <Content Include="Scripts\fontawesome\conflict-detection.js" />
     <Content Include="Scripts\fontawesome\conflict-detection.min.js" />
+    <Content Include="Scripts\fontawesome\duotone.js" />
+    <Content Include="Scripts\fontawesome\duotone.min.js" />
     <Content Include="Scripts\fontawesome\fontawesome.js" />
     <Content Include="Scripts\fontawesome\fontawesome.min.js" />
+    <Content Include="Scripts\fontawesome\light.js" />
+    <Content Include="Scripts\fontawesome\light.min.js" />
     <Content Include="Scripts\fontawesome\regular.js" />
     <Content Include="Scripts\fontawesome\regular.min.js" />
     <Content Include="Scripts\fontawesome\solid.js" />
     <Content Include="Scripts\fontawesome\solid.min.js" />
+    <Content Include="Scripts\fontawesome\thin.js" />
+    <Content Include="Scripts\fontawesome\thin.min.js" />
     <Content Include="Scripts\fontawesome\v4-shims.js" />
     <Content Include="Scripts\fontawesome\v4-shims.min.js" />
     <Content Include="Scripts\i18n\af.js" />
@@ -807,6 +820,15 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_Login.cshtml" />
     <Content Include="Views\Home\RestrictedAccess.cshtml" />
+    <Content Include="webfonts\fa-duotone-900.ttf" />
+    <Content Include="webfonts\fa-duotone-900.woff" />
+    <Content Include="webfonts\fa-duotone-900.woff2" />
+    <Content Include="webfonts\fa-light-300.ttf" />
+    <Content Include="webfonts\fa-light-300.woff" />
+    <Content Include="webfonts\fa-light-300.woff2" />
+    <Content Include="webfonts\fa-thin-100.ttf" />
+    <Content Include="webfonts\fa-thin-100.woff" />
+    <Content Include="webfonts\fa-thin-100.woff2" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
