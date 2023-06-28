@@ -74,7 +74,7 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
             {
                 output = output.Substring(0, output.Length - 1);
                 string css = $"<style id='filtercss'>{output}{{ display: none !important; }}</style>";
-                string js = $"<script id='filterjs'>window.addEventListener('load', function () {{ $(`{output}`).remove(); $(`#filtercss, #filterjs`).remove(); }})</script>";
+                string js = $"<script id='filterjs'>window.addEventListener('load', function () {{ $(`{output}, #filtercss, #filterjs`).remove(); }})</script>";
                 HttpContext.Current.Response.Write($"{css}{js}");
             }
         }
