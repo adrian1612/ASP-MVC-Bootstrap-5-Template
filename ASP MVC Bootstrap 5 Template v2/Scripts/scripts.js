@@ -95,3 +95,8 @@ class tableCart {
         }
     }
 }
+
+$(document).ready(function () {
+    var bootstrapButton = $.fn.button.noConflict()
+    $.fn.bootstrapBtn = bootstrapButton;
+});
