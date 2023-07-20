@@ -302,7 +302,7 @@
 </html>
 
 <script>
-    $.each($('.nav-link, a'), function (i, item) {
+    $.each($('#sidebar-nav .nav-item .nav-link, #sidebar-nav .nav-item a'), function (i, item) {
         if ($(item).attr('href') == location.pathname) {
             $(item).parent('li').parent('ul').addClass('show');
             $(item).parent('li').parent('ul').siblings('a').removeClass('collapsed');
