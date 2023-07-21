@@ -30,7 +30,11 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
 
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
-            filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary { {"controller", "Home" }, { "action", "RestrictedAccess" } });
+            filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary
+            {
+                { "controller", "Home" },
+                { "action", "RestrictedAccess" }
+            });
         }
     }
 
