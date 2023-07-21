@@ -137,6 +137,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="SystemRedirect">
+      <HintPath>..\..\..\..\..\Documents\Visual Studio 2015\Projects\ProjectManagementSystem\SystemRedirect\bin\Debug\SystemRedirect.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>

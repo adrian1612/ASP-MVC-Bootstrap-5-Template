@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using SystemRedirect;
 namespace ASP_MVC_Bootstrap_5_Template_v2
 {
     public class Authorized : AuthorizeAttribute
@@ -17,13 +18,33 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
             bool authorize = false;
-            foreach (var role in allowedroles)
+            if (allowedroles.Count() >= 1)
             {
-                //var user = new UserSessions();
-                //if (user.Level.ToString() == role || role == user.User.User)
-                //{
-                //    authorize = true;
-                //}
+                foreach (var role in allowedroles)
+                {
+                    if (SystemSession.Level.ToString() == role || role == SystemSession.User.UserName)
+                    {
+                        authorize = true;
+                    }
+                }
+            }
+            else
+            {
+                if (SystemSession.User != null)
+                {
+                    authorize = true;
+                }
+                else
+                {
+                    if (Debugger.IsAttached)
+                    {
+                        authorize = true;
+                    }
+                    else
+                    {
+                        HttpContext.Current.Response.Redirect("/");
+                    }
+                }
             }
             return authorize;
         }
@@ -45,7 +66,6 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
     public class FilterDisplay : FilterAttribute, IAuthorizationFilter
     {
         //Change model according to structure, make sure the model has Role or filtering properties
-        /*tbl_user*/object session { get { return HttpContext.Current.Session["user"] as /*tbl_user*/ object; } }
 
         //1) Add properties to filter
         public string Add { get; set; } = "";
@@ -64,7 +84,7 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
             list.Add(new ObjectProp(obj.Delete, "[aria-action='Delete']"));
 
             //Do not touch this!
-            var items = (from r in list where !(string.IsNullOrEmpty(r.Prop) && obj.DisplayNullProperties) && !r.RoleExist(/*session.Role*/ 1) select r).ToList();
+            var items = (from r in list where !(string.IsNullOrEmpty(r.Prop) && obj.DisplayNullProperties) && !r.RoleExist(SystemSession.Level) select r).ToList();
             items.ForEach(r =>
             {
                 output += $"{r.Html},";
