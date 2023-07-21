@@ -4,14 +4,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SystemRedirect;
 
 namespace ASP_MVC_Bootstrap_5_Template_v2.Controllers
 {
+    [Authorized]
     public class HomeController : Controller
     {
+        [SystemSession(ConnectionType = SystemConnectionString.Default, Mode = Used.Developer)]
         public ActionResult Index()
         {
             return View();
+        }
+
+        [SystemSession(ConnectionType = SystemConnectionString.Default, Mode = Used.User)]
+        public ActionResult Redirect()
+        {
+            return RedirectToAction("Index");
         }
 
         public ActionResult RestrictedAccess()
