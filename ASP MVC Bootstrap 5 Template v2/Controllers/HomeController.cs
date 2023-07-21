@@ -18,6 +18,7 @@ namespace ASP_MVC_Bootstrap_5_Template_v2.Controllers
         }
 
         [SystemSession(ConnectionType = SystemConnectionString.Default, Mode = Used.User)]
+        [AllowAnonymous]
         public ActionResult Redirect()
         {
             return RedirectToAction("Index");
@@ -26,6 +27,12 @@ namespace ASP_MVC_Bootstrap_5_Template_v2.Controllers
         public ActionResult RestrictedAccess()
         {
             return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return Redirect("/");
         }
 
         //public ActionResult Print(int ID)

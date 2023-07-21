@@ -138,7 +138,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="SystemRedirect">
-      <HintPath>..\..\..\..\..\Documents\Visual Studio 2015\Projects\ProjectManagementSystem\SystemRedirect\bin\Debug\SystemRedirect.dll</HintPath>
+      <HintPath>..\..\ProjectManagementSystem\SystemRedirect\bin\Debug\SystemRedirect.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -159,6 +159,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Classes\Authorized.cs" />
+    <Compile Include="Classes\dbcontrol.cs" />
     <Compile Include="Classes\MasterControl.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -369,6 +370,7 @@
     <Content Include="Content\fonts\fa-solid-900.svg" />
     <Content Include="Content\fonts\fontawesome-all.min.css" />
     <Content Include="Content\fontawesome.min.css" />
+    <Content Include="Content\Img\noimage.png" />
     <Content Include="Content\light.css" />
     <Content Include="Content\light.min.css" />
     <Content Include="Content\regular.css" />

@@ -1,5 +1,20 @@
 ﻿@{
-    ViewBag.Title = "Dashboard Page";
+    ViewBag.Title = "Dashboard";
 }
 
-<h1>Start Project</h1>
+<div class="pagetitle">
+    <h1>@ViewBag.Title</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active"><a href="@Url.Action("Index", "Home")">@ViewBag.Title</a></li>
+        </ol>
+    </nav>
+</div>
+
+<section class="section dashboard">
+    <div class="row">
+        <div class="col-lg-12">
+
+        </div>
+    </div>
+</section>
