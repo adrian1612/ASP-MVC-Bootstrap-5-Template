@@ -31,6 +31,9 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
                       "~/Scripts/tinymce/tinymce.js",
                       "~/Scripts/fontawesome/all.js",
                       "~/Scripts/main.js",
+                      "~/Scripts/Angular/angular.js",
+                      "~/Scripts/Angular/angular-route.js",
+                      "~/Scripts/Angular/angular-animate.js",
                       "~/Scripts/scripts.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
