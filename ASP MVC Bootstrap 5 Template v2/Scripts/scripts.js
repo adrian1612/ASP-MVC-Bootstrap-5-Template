@@ -100,3 +100,16 @@ $(document).ready(function () {
     var bootstrapButton = $.fn.button.noConflict()
     $.fn.bootstrapBtn = bootstrapButton;
 });
+
+
+$(document).ready(function () {
+    $('.searchbox').select2();
+    $.each($('#sidebar-nav .nav-item .nav-link, #sidebar-nav .nav-item a'), function (i, item) {
+        if ($(item).attr('href') == location.pathname + location.search) {
+            $(item).parent('li').parent('ul').addClass('show');
+            $(item).parent('li').parent('ul').siblings('a').removeClass('collapsed');
+            $(item).addClass('active');
+            $(item).removeClass('collapsed');
+        }
+    });
+});
