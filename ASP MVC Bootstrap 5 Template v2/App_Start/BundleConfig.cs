@@ -24,6 +24,7 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.bundle.js",
                       "~/Scripts/jquery.mask.js",
+                      "~/Scripts/echarts/echarts.js",
                       "~/Scripts/select2.js",
                       "~/Scripts/DataTables/jquery.dataTables.js",
                       "~/Scripts/DataTables/dataTables.bootstrap5.min.js",
