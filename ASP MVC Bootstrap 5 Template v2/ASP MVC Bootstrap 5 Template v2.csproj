@@ -162,6 +162,8 @@
     <Compile Include="Areas\Area\Controllers\MunicipalityController.cs" />
     <Compile Include="Areas\Area\Controllers\ProvinceController.cs" />
     <Compile Include="Areas\Area\Controllers\RegionController.cs" />
+    <Compile Include="Areas\Async\AsyncController.cs" />
+    <Compile Include="Classes\AsyncResult.cs" />
     <Compile Include="Classes\Authorized.cs" />
     <Compile Include="Classes\MasterControl.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -900,6 +902,8 @@
     <Folder Include="Areas\Area\Models\" />
     <Folder Include="Areas\Area\Views\General\" />
     <Folder Include="Areas\Area\Views\Shared\" />
+    <Folder Include="Areas\Async\Views\Async\" />
+    <Folder Include="Areas\Database\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

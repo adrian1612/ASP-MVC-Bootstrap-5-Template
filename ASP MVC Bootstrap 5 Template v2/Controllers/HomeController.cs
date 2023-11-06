@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ASP_MVC_Bootstrap_5_Template_v2.Classes;
 
 namespace ASP_MVC_Bootstrap_5_Template_v2.Controllers
 {
@@ -38,10 +39,11 @@ namespace ASP_MVC_Bootstrap_5_Template_v2.Controllers
 
         public ActionResult JsonSample()
         {
-            string strSample = DateTime.Now.ToLongTimeString() ;
-            var json = Json(strSample, JsonRequestBehavior.AllowGet);
-            json.MaxJsonLength = int.MaxValue;
-            return json;
+            //string strSample = DateTime.Now.ToLongTimeString() ;
+            //var json = Json(strSample, JsonRequestBehavior.AllowGet);
+            //json.MaxJsonLength = int.MaxValue;
+            //return json;
+            return AsyncResult<string>.Async(DateTime.Now.ToLongTimeString());
         }
     }
 }
