@@ -2,7 +2,7 @@
 
 namespace ASP_MVC_Bootstrap_5_Template_v2.Areas.Area
 {
-    public class AreaAreaRegistration : AreaRegistration 
+    public class Registration : System.Web.Mvc.AreaRegistration 
     {
         public override string AreaName 
         {

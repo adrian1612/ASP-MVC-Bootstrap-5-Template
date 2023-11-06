@@ -6,6 +6,7 @@
     <title>ASP MVC Bootstrap 5 Template v2 - @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/udjson")
 </head>
 <body>
     <!-- ======= Header ======= -->
@@ -13,8 +14,8 @@
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="@Url.Action("Index", "Home", new { area = "" })" class="logo d-flex align-items-center">
-                <img src="assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">SYSTEM</span>
+                <img src="logo 4.png" alt="">
+                <span class="d-none d-lg-block"></span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -106,6 +107,11 @@
                 </a>
                 <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
+                        <a href="#" onclick="LoadDataSample()">
+                            <i class="bi bi-circle"></i><span>Json Sample</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="@Url.Action("Index", "Country", new { area = "Area" })">
                             <i class="bi bi-circle"></i><span>Country</span>
                         </a>
@@ -166,5 +172,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @Html.Partial("JsonSample")
 </body>
 </html>

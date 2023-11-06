@@ -155,7 +155,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\Area\AreaAreaRegistration.cs" />
+    <Compile Include="Areas\Area\Registration.cs" />
     <Compile Include="Areas\Area\Controllers\BarangayController.cs" />
     <Compile Include="Areas\Area\Controllers\CountryController.cs" />
     <Compile Include="Areas\Area\Controllers\GeneralController.cs" />
@@ -458,6 +458,10 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="init.aspx" />
+    <Content Include="logo 1.png" />
+    <Content Include="logo 3.png" />
+    <Content Include="logo 4.png" />
+    <Content Include="logo.png" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -466,6 +470,7 @@
     <Content Include="Scripts\Angular\angular-animate.js" />
     <Content Include="Scripts\Angular\angular-route.js" />
     <Content Include="Scripts\Angular\angular.js" />
+    <Content Include="Scripts\Areas\JsonSample.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -888,6 +893,7 @@
     <Content Include="webfonts\fa-thin-100.ttf" />
     <Content Include="webfonts\fa-thin-100.woff" />
     <Content Include="webfonts\fa-thin-100.woff2" />
+    <Content Include="Views\Home\JsonSample.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

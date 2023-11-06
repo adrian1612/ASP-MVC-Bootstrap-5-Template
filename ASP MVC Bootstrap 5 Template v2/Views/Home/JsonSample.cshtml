@@ -1,0 +1,38 @@
+﻿<script>
+    //LoadData();
+    function LoadDataSample() {
+        //$("#tblStudent tbody tr").remove();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("JsonSample")',
+            dataType: 'json',
+            //data: { id: '' },
+            success: function (strSample) {
+                var item = '';
+                var main = document.querySelector("#main");
+                //$.each(data, function (i, item) {
+                    var rows =
+                        "<div>\
+                            <label>\
+                                Sasmple Label\
+                            </label>\
+                            <div id='strSample' name='strSample'>"
+                            +
+                            strSample
+                            +
+                            "</div>\
+                        </div>";
+                    main.innerHTML = rows;
+                //});
+            },
+            error: function (ex) {
+                //var r = jQuery.parseJSON(response.responseText);
+                //alert("Message: " + r.Message);
+                //alert("StackTrace: " + r.StackTrace);
+                //alert("ExceptionType: " + r.ExceptionType);
+                console.log("error");
+            }
+        });
+        return false;
+    }
+</script>

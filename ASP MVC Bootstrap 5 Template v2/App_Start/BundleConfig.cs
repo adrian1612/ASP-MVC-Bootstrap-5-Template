@@ -49,6 +49,11 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
                       "~/Content/bootstrap-icons/bootstrap-icons.css",
                       "~/Content/Style.css",
                       "~/Content/site.css"));
+
+            // user defined section
+            // user defined scripts
+            bundles.Add(new ScriptBundle("~/bundles/udjson").Include(
+                        "~/Scripts/Areas/JsonSample.js"));
         }
     }
 }

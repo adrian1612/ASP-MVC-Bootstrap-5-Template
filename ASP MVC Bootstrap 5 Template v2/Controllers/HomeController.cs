@@ -16,6 +16,7 @@ namespace ASP_MVC_Bootstrap_5_Template_v2.Controllers
 
         public ActionResult RestrictedAccess()
         {
+
             return View();
         }
 
@@ -34,5 +35,13 @@ namespace ASP_MVC_Bootstrap_5_Template_v2.Controllers
         //    Response.End();
         //    return View(file);
         //}
+
+        public ActionResult JsonSample()
+        {
+            string strSample = DateTime.Now.ToLongTimeString() ;
+            var json = Json(strSample, JsonRequestBehavior.AllowGet);
+            json.MaxJsonLength = int.MaxValue;
+            return json;
+        }
     }
 }
