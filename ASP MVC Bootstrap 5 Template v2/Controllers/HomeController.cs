@@ -39,10 +39,6 @@ namespace ASP_MVC_Bootstrap_5_Template_v2.Controllers
 
         public ActionResult JsonSample()
         {
-            //string strSample = DateTime.Now.ToLongTimeString() ;
-            //var json = Json(strSample, JsonRequestBehavior.AllowGet);
-            //json.MaxJsonLength = int.MaxValue;
-            //return json;
             return AsyncResult<string>.Async(DateTime.Now.ToLongTimeString());
         }
     }
