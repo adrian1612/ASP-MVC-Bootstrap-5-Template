@@ -1,17 +1,13 @@
-﻿using ASP_MVC_Bootstrap_5_Template_v2.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ExcelDataReader.Core;
-using Microsoft.Reporting.WebForms;
 
-namespace ASP_MVC_Bootstrap_5_Template_v2.Areas.Area.Controllers
+namespace ASP_MVC_Bootstrap_5_Template_v2.Classes
 {
-    public class BarangayController : Controller
+    public class AsyncBase
     {
-        // GET: Area/Barangay
         public ActionResult Index()
         {
             return View();

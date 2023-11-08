@@ -164,6 +164,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Area\Models\Barangay.cs" />
     <Compile Include="Areas\Area\Registration.cs" />
     <Compile Include="Areas\Area\Controllers\BarangayController.cs" />
     <Compile Include="Areas\Area\Controllers\CountryController.cs" />
@@ -172,8 +173,10 @@
     <Compile Include="Areas\Area\Controllers\ProvinceController.cs" />
     <Compile Include="Areas\Area\Controllers\RegionController.cs" />
     <Compile Include="Areas\Async\AsyncController.cs" />
+    <Compile Include="Classes\AsyncBase.cs" />
     <Compile Include="Classes\AsyncResult.cs" />
     <Compile Include="Classes\Authorized.cs" />
+    <Compile Include="Classes\Barangay.cs" />
     <Compile Include="Classes\MasterControl.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -908,7 +911,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Area\Models\" />
     <Folder Include="Areas\Area\Views\General\" />
     <Folder Include="Areas\Area\Views\Shared\" />
     <Folder Include="Areas\Async\Views\Async\" />
