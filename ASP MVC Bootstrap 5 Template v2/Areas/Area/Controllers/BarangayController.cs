@@ -92,6 +92,13 @@ namespace ASP_MVC_Bootstrap_5_Template_v2.Areas.Area.Controllers
             return AsyncResult<string>.Async(DateTime.Now.ToLongTimeString());
         }
 
+        public ActionResult Excel_TableLink()
+        {
+            return AsyncResult<string>.Async(DateTime.Now.ToLongTimeString());
+        }
+
+        
+
         //public ActionResult PrintV2_Last(DateTime StartDate, DateTime EndDate, Status Status, Format Format = Format.PDF, bool? isLastRecord = false, string sessionUser = "")
         //{
 

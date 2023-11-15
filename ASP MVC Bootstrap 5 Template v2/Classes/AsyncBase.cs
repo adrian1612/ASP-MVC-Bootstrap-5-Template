@@ -1,23 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.OleDb;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.OleDb;
 
 namespace ASP_MVC_Bootstrap_5_Template_v2.Classes
 {
-    public class AsyncBase
+    public class AsyncBase<T> : Controller
     {
+        // GET: Area/Barangay
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult List()
+        public  ActionResult List(T obj)
         {
-            return AsyncResult<string>.Async(DateTime.Now.ToLongTimeString());
+            return AsyncResult<T>.Async(obj);
         }
-
 
         /// <summary>
         /// Insert single item
@@ -63,7 +66,17 @@ namespace ASP_MVC_Bootstrap_5_Template_v2.Classes
             return AsyncResult<string>.Async(DateTime.Now.ToLongTimeString());
         }
 
+        public ActionResult CreateTable()
+        {
+            return AsyncResult<string>.Async(DateTime.Now.ToLongTimeString());
+        }
+
         public ActionResult RecreateTable()
+        {
+            return AsyncResult<string>.Async(DateTime.Now.ToLongTimeString());
+        }
+
+        public ActionResult CopyTable()
         {
             return AsyncResult<string>.Async(DateTime.Now.ToLongTimeString());
         }
@@ -86,6 +99,46 @@ namespace ASP_MVC_Bootstrap_5_Template_v2.Classes
         public ActionResult Excel_TableReplace()
         {
             return AsyncResult<string>.Async(DateTime.Now.ToLongTimeString());
+        }
+
+        public ActionResult Excel_TableLink()
+        {
+            return AsyncResult<string>.Async(DateTime.Now.ToLongTimeString());
+        }
+
+        public ActionResult Excel_TableDisplay()
+        {
+            return AsyncResult<string>.Async(DateTime.Now.ToLongTimeString());
+        }
+
+        private DataTable GetDataTable(string sql, string connectionString)
+        {
+            DataTable dt = null;
+
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            {
+                conn.Open();
+                using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                {
+                    using (OleDbDataReader rdr = cmd.ExecuteReader())
+                    {
+                        dt.Load(rdr);
+                        return dt;
+                    }
+                }
+            }
+        }
+
+        private void GetExcel()
+        {
+            string fullPathToExcel = @"<C:\Users\JM01\Desktop\sample excel reading.xls>"; //ie C:\Temp\YourExcel.xls
+            string connString = string.Format("Provider=System.Data.OleDb;Data Source={0};Extended Properties='Excel 12.0;HDR=yes'", fullPathToExcel);
+            DataTable dt = GetDataTable("SELECT * from [SheetName$]", connString);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                //Do what you need to do with your data here
+            }
         }
 
         //public ActionResult PrintV2_Last(DateTime StartDate, DateTime EndDate, Status Status, Format Format = Format.PDF, bool? isLastRecord = false, string sessionUser = "")
