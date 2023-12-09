@@ -1,7 +1,7 @@
-﻿CREATE DATABASE dbASP_MVC_Bootstrap_5_Template_v2
+﻿CREATE DATABASE ASP_MVC_Bootstrap_5_Template_v2
 GO
 
-USE dbASP_MVC_Bootstrap_5_Template_v2
+USE ASP_MVC_Bootstrap_5_Template_v2
 GO
 
 CREATE TABLE [dbo].[tbl_User](
