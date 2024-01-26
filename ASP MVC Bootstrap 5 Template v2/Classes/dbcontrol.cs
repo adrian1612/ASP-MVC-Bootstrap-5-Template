@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace ASP_MVC_Bootstrap_5_Template_v2.Classes
 {
@@ -17,6 +18,15 @@ namespace ASP_MVC_Bootstrap_5_Template_v2.Classes
 
 public class Tool
 {
+    public static string GetUrl(string Action, string Controller, object RouteData)
+    {
+        var result = "";
+        var request = HttpContext.Current.Request;
+        var helper = new UrlHelper(request.RequestContext);
+        result = helper.Action(Action, Controller, RouteData, request.Url.Scheme);
+        return result;
+    }
+
     public static byte[] ReportWrapper(string ReportPath, string Filename, ReportFormat format, Action<List<ReportDataSource>, List<ReportParameter>> _data)
     {
         byte[] result;
