@@ -24,6 +24,15 @@ namespace ASP_MVC_Bootstrap_5_Template_v2.Classes
 
 public class Tool
 {
+    public static string GetUrl(string Action, string Controller, object RouteData)
+    {
+        var result = "";
+        var request = HttpContext.Current.Request;
+        var helper = new UrlHelper(request.RequestContext);
+        result = helper.Action(Action, Controller, RouteData, request.Url.Scheme);
+        return result;
+    }
+
     public static SelectList Gender
     {
         get
