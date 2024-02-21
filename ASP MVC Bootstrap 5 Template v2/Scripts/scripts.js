@@ -129,7 +129,7 @@ var popupCenter = ({url , title, w, h}) => {
 $(document).ready(function () {
     $('.searchbox').select2();
     $.each($('#sidebar-nav .nav-item .nav-link, #sidebar-nav .nav-item a'), function (i, item) {
-        if ($(item).attr('href') == location.pathname.replace('/Create', '').replace('/Edit', '') + location.search.replace('?Length=0', '')) {
+        if ($(item).attr('href') == location.pathname.replace('/Create', '').replace(/\/Edit\/([\d]+)/, '') + location.search.replace('?Length=0', '')) {
             $(item).parent('li').parent('ul').addClass('show');
             $(item).parent('li').parent('ul').siblings('a').removeClass('collapsed');
             $(item).addClass('active');
