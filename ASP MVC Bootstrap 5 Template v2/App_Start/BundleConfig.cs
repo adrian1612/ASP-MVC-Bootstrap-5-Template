@@ -11,6 +11,8 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery-ui-{version}.js",
+                        "~/Scripts/knockout-{version}.js",
+                        "~/Scripts/knockout.mapping-latest.js",
                         "~/Scripts/jquery.unobtrusive-ajax.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
