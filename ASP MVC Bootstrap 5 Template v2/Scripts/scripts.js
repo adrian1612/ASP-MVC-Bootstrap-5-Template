@@ -127,7 +127,7 @@ var popupCenter = ({url , title, w, h}) => {
 
 
 $(document).ready(function () {
-    $('.searchbox').select2();
+    $('.searchbox').select2({width: 'style'});
     $.each($('#sidebar-nav .nav-item .nav-link, #sidebar-nav .nav-item a'), function (i, item) {
         if ($(item).attr('href') == location.pathname.replace('/Create', '').replace(/\/Edit\/([\d]+)/, '') + location.search.replace('?Length=0', '')) {
             $(item).parent('li').parent('ul').addClass('show');
