@@ -2,14 +2,6 @@
  * ©2011-2015 SpryMedia Ltd - datatables.net/license
  */
 
-/**
- * DataTables integration for Foundation. This requires Foundation 5 and
- * DataTables 1.10 or newer.
- *
- * This file sets the defaults and adds options to DataTables to style its
- * controls using Foundation. See http://datatables.net/manual/styling/foundation
- * for further information.
- */
 (function( factory ){
 	if ( typeof define === 'function' && define.amd ) {
 		// AMD
@@ -19,154 +11,148 @@
 	}
 	else if ( typeof exports === 'object' ) {
 		// CommonJS
-		module.exports = function (root, $) {
-			if ( ! root ) {
-				root = window;
+		var jq = require('jquery');
+		var cjsRequires = function (root, $) {
+			if ( ! $.fn.dataTable ) {
+				require('datatables.net')(root, $);
 			}
-
-			if ( ! $ || ! $.fn.dataTable ) {
-				$ = require('datatables.net')(root, $).$;
-			}
-
-			return factory( $, root, root.document );
 		};
+
+		if (typeof window === 'undefined') {
+			module.exports = function (root, $) {
+				if ( ! root ) {
+					// CommonJS environments without a window global must pass a
+					// root. This will give an error otherwise
+					root = window;
+				}
+
+				if ( ! $ ) {
+					$ = jq( root );
+				}
+
+				cjsRequires( root, $ );
+				return factory( $, root, root.document );
+			};
+		}
+		else {
+			cjsRequires( window, jq );
+			module.exports = factory( jq, window, window.document );
+		}
 	}
 	else {
 		// Browser
 		factory( jQuery, window, document );
 	}
-}(function( $, window, document, undefined ) {
+}(function( $, window, document ) {
 'use strict';
 var DataTable = $.fn.dataTable;
 
-// Detect Foundation 5 / 6 as they have different element and class requirements
-var meta = $('<meta class="foundation-mq"/>').appendTo('head');
-DataTable.ext.foundationVersion = meta.css('font-family').match(/small|medium|large/) ? 6 : 5;
-meta.remove();
 
 
-$.extend( DataTable.ext.classes, {
-	sWrapper:    "dataTables_wrapper dt-foundation",
-	sProcessing: "dataTables_processing panel callout"
+/**
+ * DataTables integration for Foundation. This requires Foundation 5 and
+ * DataTables 1.10 or newer.
+ *
+ * This file sets the defaults and adds options to DataTables to style its
+ * controls using Foundation. See https://datatables.net/manual/styling/foundation
+ * for further information.
+ */
+
+$.extend( true, DataTable.ext.classes, {
+	container: "dt-container dt-foundation",
+	processing: {
+		container: "dt-processing panel callout"
+	}
 } );
 
 
 /* Set the defaults for DataTables initialisation */
 $.extend( true, DataTable.defaults, {
-	dom:
-		"<'row'<'small-6 columns'l><'small-6 columns'f>r>"+
-		"t"+
-		"<'row'<'small-6 columns'i><'small-6 columns'p>>",
 	renderer: 'foundation'
 } );
 
+DataTable.ext.renderer.pagingButton.foundation = function (settings, buttonType, content, active, disabled) {
+	var btnClasses = [];
+	var li;
 
-/* Page button renderer */
-DataTable.ext.renderer.pageButton.foundation = function ( settings, host, idx, buttons, page, pages ) {
-	var api = new DataTable.Api( settings );
-	var classes = settings.oClasses;
-	var lang = settings.oLanguage.oPaginate;
-	var aria = settings.oLanguage.oAria.paginate || {};
-	var btnDisplay, btnClass;
-	var tag;
-	var v5 = DataTable.ext.foundationVersion === 5;
+	if (buttonType === 'ellipsis') {
+		// No `a` tag for ellipsis
+		li = $('<li>', {
+			class: 'ellipsis'
+		});
 
-	var attach = function( container, buttons ) {
-		var i, ien, node, button;
-		var clickHandler = function ( e ) {
-			e.preventDefault();
-			if ( !$(e.currentTarget).hasClass('unavailable') && api.page() != e.data.action ) {
-				api.page( e.data.action ).draw( 'page' );
-			}
+		return {
+			display: li,
+			clicker: li
 		};
+	}
+	else if (active || disabled) {
+		// No `a` tag for current or disabled
+		li = $('<li>', {
+			class: active
+				? 'current'
+				: 'disabled ' + btnClasses.join(' ')
+		}).html(content);
 
-		for ( i=0, ien=buttons.length ; i<ien ; i++ ) {
-			button = buttons[i];
+		return {
+			display: li,
+			clicker: li
+		};
+	}
 
-			if ( $.isArray( button ) ) {
-				attach( container, button );
-			}
-			else {
-				btnDisplay = '';
-				btnClass = '';
-				tag = null;
+	li = $('<li>').addClass(btnClasses.join(' '));
+	var a = $('<a>', {
+		'href': '#'
+	})
+		.html(content)
+		.appendTo(li);
 
-				switch ( button ) {
-					case 'ellipsis':
-						btnDisplay = '&#x2026;';
-						btnClass = 'unavailable disabled';
-						tag = null;
-						break;
-
-					case 'first':
-						btnDisplay = lang.sFirst;
-						btnClass = button + (page > 0 ?
-							'' : ' unavailable disabled');
-						tag = page > 0 ? 'a' : null;
-						break;
-
-					case 'previous':
-						btnDisplay = lang.sPrevious;
-						btnClass = button + (page > 0 ?
-							'' : ' unavailable disabled');
-						tag = page > 0 ? 'a' : null;
-						break;
-
-					case 'next':
-						btnDisplay = lang.sNext;
-						btnClass = button + (page < pages-1 ?
-							'' : ' unavailable disabled');
-						tag = page < pages-1 ? 'a' : null;
-						break;
-
-					case 'last':
-						btnDisplay = lang.sLast;
-						btnClass = button + (page < pages-1 ?
-							'' : ' unavailable disabled');
-						tag = page < pages-1 ? 'a' : null;
-						break;
-
-					default:
-						btnDisplay = button + 1;
-						btnClass = page === button ?
-							'current' : '';
-						tag = page === button ?
-							null : 'a';
-						break;
-				}
-
-				if ( v5 ) {
-					tag = 'a';
-				}
-
-				if ( btnDisplay ) {
-					node = $('<li>', {
-							'class': classes.sPageButton+' '+btnClass,
-							'aria-controls': settings.sTableId,
-							'aria-label': aria[ button ],
-							'tabindex': settings.iTabIndex,
-							'id': idx === 0 && typeof button === 'string' ?
-								settings.sTableId +'_'+ button :
-								null
-						} )
-						.append( tag ?
-							$('<'+tag+'/>', {'href': '#'} ).html( btnDisplay ) :
-							btnDisplay
-						)
-						.appendTo( container );
-
-					settings.oApi._fnBindAction(
-						node, {action: button}, clickHandler
-					);
-				}
-			}
-		}
+	return {
+		display: li,
+		clicker: a
 	};
+};
 
-	attach(
-		$(host).empty().html('<ul class="pagination"/>').children('ul'),
-		buttons
-	);
+DataTable.ext.renderer.pagingContainer.foundation = function (settings, buttonEls) {
+	return $('<ul/>').addClass('pagination').append(buttonEls);
+};
+
+DataTable.ext.renderer.layout.foundation = function ( settings, container, items ) {
+	var row = $( '<div/>', {
+			"class": 'grid-x'
+		} )
+		.appendTo( container );
+
+	$.each( items, function (key, val) {
+		var klass = '';
+		var style = {};
+
+		if ( val.table ) {
+			klass += 'cell small-12';
+		}
+		else if ( key === 'start' ) {
+			// left is auto sized, right is shrink, allowing them to take the full width, and letting the
+			// content take its maximum available space.
+			klass += 'cell auto';
+		}
+		else if ( key === 'end' ) {
+			klass += 'cell shrink';
+			style.marginLeft = 'auto';
+		}
+		else if ( key === 'full' ) {
+			klass += 'cell';
+			style.marginLeft = 'auto';
+			style.marginRight = 'auto';
+		}
+
+		$( '<div/>', {
+				id: val.id || null,
+				"class": klass+' '+(val.className || '')
+			} )
+			.css(style)
+			.append( val.contents )
+			.appendTo( row );
+	} );
 };
 
 
