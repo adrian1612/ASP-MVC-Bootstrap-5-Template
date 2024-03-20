@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>ASP MVC Bootstrap 5 Template v2 - @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/dataTable")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
     <script>
@@ -182,7 +184,6 @@
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <img src="@string.Format("{0}", SystemSession.User.Img == null ? Url.Content("~/Content/Img/noimage.png") : SystemSession.User.Img64)" alt="Profile" class="rounded-circle">
-                        <i class="bi bi-person"></i>
                         <span class="d-none d-md-block dropdown-toggle ps-2">@SystemSession.User.Fullname</span>
                     </a><!-- End Profile Iamge Icon -->
 
@@ -269,8 +270,9 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 
-    @Scripts.Render("~/bundles/jquery")
+    
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/dataTable")
     @RenderSection("scripts", required: false)
 </body>
 </html>
