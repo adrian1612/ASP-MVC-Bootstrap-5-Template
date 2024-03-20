@@ -24,11 +24,16 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.bundle.js",
-                      "~/Scripts/jquery.mask.js",
-                      "~/Scripts/echarts/echarts.js",
-                      "~/Scripts/select2.js",
+            bundles.Add(new StyleBundle("~/Content/dataTable").Include(
+                      "~/Content/DataTables/css/dataTables.css",
+                      "~/Content/DataTables/css/dataTables.bootstrap5.css",
+                      "~/Content/DataTables/css/buttons.dataTables.css",
+                      "~/Content/DataTables/css/buttons.bootstrap5.css",
+                      "~/Content/DataTables/css/colReorder.bootstrap5.css",
+                      "~/Content/DataTables/css/responsive.bootstrap5.css"
+                      ));
+
+            bundles.Add(new ScriptBundle("~/bundles/dataTable").Include(
                       "~/Scripts/DataTables/dataTables.js",
                       "~/Scripts/DataTables/dataTables.bootstrap5.js",
                       "~/Scripts/DataTables/dataTables.buttons.js",
@@ -39,6 +44,15 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
                       "~/Scripts/DataTables/buttons.html5.js",
                       "~/Scripts/DataTables/buttons.print.js",
                       "~/Scripts/DataTables/buttons.colVis.js",
+                      "~/Scripts/DataTables/colReorder.bootstrap5.js",
+                      "~/Scripts/DataTables/responsive.bootstrap5.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                      "~/Scripts/bootstrap.bundle.js",
+                      "~/Scripts/jquery.mask.js",
+                      "~/Scripts/echarts/echarts.js",
+                      "~/Scripts/select2.js",
                       "~/Scripts/respond.js",
                       "~/Scripts/tinymce/tinymce.js",
                       "~/Scripts/fontawesome/all.js",
@@ -47,9 +61,6 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
                       "~/Scripts/toastr.js",
                       "~/Scripts/jquery.signaturepad.js",
                       "~/Content/SignaturePad/json2.min.js",
-                      "~/Scripts/Angular/angular.js",
-                      "~/Scripts/Angular/angular-route.js",
-                      "~/Scripts/Angular/angular-animate.js",
                       "~/Scripts/scripts.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

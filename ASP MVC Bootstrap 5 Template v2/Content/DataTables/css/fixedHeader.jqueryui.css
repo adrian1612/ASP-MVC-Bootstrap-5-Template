@@ -1,10 +1,6 @@
-table.fixedHeader-floating {
-  position: fixed !important;
-  background-color: white;
-}
-
-table.fixedHeader-locked {
-  position: absolute !important;
+table.dataTable.fixedHeader-floating,
+table.dataTable.fixedHeader-locked {
+  position: relative !important;
   background-color: white;
 }
 
