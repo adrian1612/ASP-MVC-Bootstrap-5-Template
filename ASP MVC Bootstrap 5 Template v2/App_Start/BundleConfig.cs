@@ -32,6 +32,10 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
                       "~/Scripts/DataTables/dataTables.js"
                 ));
 
+            bundles.Add(new ScriptBundle("~/bundles/echart").Include(
+                     "~/Scripts/echarts/echarts.js"
+                     ));
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.bundle.js",
                       "~/Scripts/jquery.mask.js",
@@ -50,10 +54,6 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
                       "~/Content/bootstrap.css",
                       "~/Content/css/select2.css",
                       "~/Content/css/select2-bootstrap-5-theme.min.css",
-                      "~/Content/DataTables/css/dataTables.css",
-                      "~/Content/DataTables/css/dataTables.bootstrap5.css",
-                      "~/Content/DataTables/css/buttons.dataTables.css",
-                      "~/Content/DataTables/css/buttons.bootstrap5.css",
                       "~/Content/all.css",
                       "~/Content/toastr.css",
                       "~/Content/SignaturePad/jquery.signaturepad.css",
