@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This combined file was created by the DataTables downloader builder:
  *   https://datatables.net/download
  *
@@ -1313,8 +1313,8 @@ table.dataTable.table-bordered {
 }
 table.dataTable.table-bordered th,
 table.dataTable.table-bordered td {
-  border-right-width: 0;
-  border-top-width: 0;
+  border-right-width: 1px;
+  border-top-width: 1px;
 }
 table.dataTable.table-bordered th:last-child,
 table.dataTable.table-bordered td:last-child {
@@ -1322,7 +1322,7 @@ table.dataTable.table-bordered td:last-child {
 }
 table.dataTable.table-bordered tr:last-child th,
 table.dataTable.table-bordered tr:last-child td {
-  border-bottom-width: 0;
+  border-bottom-width: 1px;
 }
 
 html[data-bs-theme=dark] table.dataTable thead tr > .dtfc-fixed-start,
