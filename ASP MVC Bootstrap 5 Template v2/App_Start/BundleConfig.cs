@@ -25,27 +25,11 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/dataTable").Include(
-                      "~/Content/DataTables/css/dataTables.css",
-                      "~/Content/DataTables/css/dataTables.bootstrap5.css",
-                      "~/Content/DataTables/css/buttons.dataTables.css",
-                      "~/Content/DataTables/css/buttons.bootstrap5.css",
-                      "~/Content/DataTables/css/colReorder.bootstrap5.css",
-                      "~/Content/DataTables/css/responsive.bootstrap5.css"
+                      "~/Content/DataTables/css/dataTables.css"
                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/dataTable").Include(
-                      "~/Scripts/DataTables/dataTables.js",
-                      "~/Scripts/DataTables/dataTables.bootstrap5.js",
-                      "~/Scripts/DataTables/dataTables.buttons.js",
-                      "~/Scripts/DataTables/buttons.bootstrap5.js",
-                      "~/Scripts/DataTables/jszip.js",
-                      "~/Scripts/DataTables/pdfmake.js",
-                      "~/Scripts/DataTables/vfs_fonts.js",
-                      "~/Scripts/DataTables/buttons.html5.js",
-                      "~/Scripts/DataTables/buttons.print.js",
-                      "~/Scripts/DataTables/buttons.colVis.js",
-                      "~/Scripts/DataTables/colReorder.bootstrap5.js",
-                      "~/Scripts/DataTables/responsive.bootstrap5.js"
+                      "~/Scripts/DataTables/dataTables.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
