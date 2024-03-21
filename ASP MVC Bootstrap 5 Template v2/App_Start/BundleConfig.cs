@@ -42,7 +42,7 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
                       "~/Scripts/select2.js",
                       "~/Scripts/respond.js",
                       "~/Scripts/tinymce/tinymce.js",
-                      "~/Scripts/fontawesome/all.js",
+                      "~/Scripts/fontawesome/fontawesome.js",
                       "~/Scripts/index.global.js",
                       "~/Scripts/main.js",
                       "~/Scripts/toastr.js",
