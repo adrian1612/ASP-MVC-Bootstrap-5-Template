@@ -1322,7 +1322,7 @@ table.dataTable.table-bordered td:last-child {
 }
 table.dataTable.table-bordered tr:last-child th,
 table.dataTable.table-bordered tr:last-child td {
-  border-bottom-width: 1px;
+  border-bottom-width: 0;
 }
 
 html[data-bs-theme=dark] table.dataTable thead tr > .dtfc-fixed-start,
