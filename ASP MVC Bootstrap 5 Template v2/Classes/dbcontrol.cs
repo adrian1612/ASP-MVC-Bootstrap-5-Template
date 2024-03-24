@@ -1,5 +1,5 @@
-﻿using ASP_MVC_Bootstrap_5_Template_v2.Models;
-using Microsoft.Reporting.WebForms;
+﻿using Microsoft.Reporting.WebForms;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +12,30 @@ namespace ASP_MVC_Bootstrap_5_Template_v2.Classes
     {
         public dbcontrol() : base("ASP_MVC_Bootstrap_5_Template_v2")
         {
-            QueryException += Dbcontrol_QueryException;
-        }
 
-        private void Dbcontrol_QueryException(Exception e)
+        }
+    }
+}
+
+public class JsonNetResult : JsonResult
+{
+    public new object Data { get; set; }
+
+    public JsonNetResult()
+    {
+    }
+    public override void ExecuteResult(ControllerContext context)
+    {
+        HttpResponseBase response = context.HttpContext.Response;
+        response.ContentType = "application/json";
+        if (ContentEncoding != null)
+            response.ContentEncoding = ContentEncoding;
+        if (Data != null)
         {
-            throw e;
+            JsonTextWriter writer = new JsonTextWriter(response.Output) { Formatting = Formatting.Indented };
+            JsonSerializer serializer = JsonSerializer.Create(new JsonSerializerSettings());
+            serializer.Serialize(writer, Data);
+            writer.Flush();
         }
     }
 }
@@ -31,14 +49,6 @@ public class Tool
         var helper = new UrlHelper(request.RequestContext);
         result = helper.Action(Action, Controller, RouteData, request.Url.Scheme);
         return result;
-    }
-
-    public static SelectList Gender
-    {
-        get
-        {
-            return new SelectList(new string[] { "Male", "Female" });
-        }
     }
 
     public static byte[] ReportWrapper(string ReportPath, string Filename, ReportFormat format, Action<List<ReportDataSource>, List<ReportParameter>> _data)
@@ -77,12 +87,6 @@ public class Tool
         return result;
     }
 }
-
-public class UserSession
-{
-    public static tbl_User User { get { return (tbl_User)HttpContext.Current.Session["User"]; } }
-}
-
 
 public enum ReportFormat
 {
