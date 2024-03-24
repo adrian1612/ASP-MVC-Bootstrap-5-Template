@@ -1,4 +1,5 @@
-﻿using Microsoft.Reporting.WebForms;
+﻿using ASP_MVC_Bootstrap_5_Template_v2.Models;
+using Microsoft.Reporting.WebForms;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -91,6 +92,11 @@ public class Tool
         HttpContext.Current.Response.End();
         return result;
     }
+}
+
+public class UserSession
+{
+    public static tbl_User User { get { return (tbl_User)HttpContext.Current.Session["User"]; } }
 }
 
 public enum ReportFormat
