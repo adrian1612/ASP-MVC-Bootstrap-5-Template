@@ -57,6 +57,14 @@ public class Tool
         return result;
     }
 
+    public static SelectList Gender
+    {
+        get
+        {
+            return new SelectList(new string[] { "Male", "Female" });
+        }
+    }
+
     public static byte[] ReportWrapper(string ReportPath, string Filename, ReportFormat format, Action<List<ReportDataSource>, List<ReportParameter>> _data)
     {
         byte[] result;
