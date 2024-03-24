@@ -12,7 +12,12 @@ namespace ASP_MVC_Bootstrap_5_Template_v2.Classes
     {
         public dbcontrol() : base("ASP_MVC_Bootstrap_5_Template_v2")
         {
+            QueryException += Dbcontrol_QueryException;
+        }
 
+        private void Dbcontrol_QueryException(Exception e)
+        {
+            throw e;
         }
     }
 }
