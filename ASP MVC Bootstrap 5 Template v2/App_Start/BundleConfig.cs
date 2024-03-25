@@ -45,6 +45,7 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
                       "~/Scripts/fontawesome/fontawesome.js",
                       "~/Scripts/index.global.js",
                       "~/Scripts/main.js",
+                      "~/Scripts/moment.js",
                       "~/Scripts/toastr.js",
                       "~/Scripts/jquery.signaturepad.js",
                       "~/Content/SignaturePad/json2.min.js",
