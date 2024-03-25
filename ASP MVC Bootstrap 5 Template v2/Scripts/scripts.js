@@ -125,6 +125,13 @@ var popupCenter = ({url , title, w, h}) => {
     if (window.focus) newWindow.focus();
 }
 
+$(document).on('ajaxSuccess', () => {
+    $('#spinner').hide();
+});
+
+$(document).on('ajaxSend', () => {
+    $('#spinner').show();
+});
 
 $(document).ready(function () {
     $('.searchbox').select2({width: 'style'});
