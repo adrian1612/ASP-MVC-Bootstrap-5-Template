@@ -133,6 +133,18 @@ $(document).on('ajaxSend', () => {
     $('#spinner').show();
 });
 
+$('body').on('shown.bs.modal', '.modal', function() {
+    $(this).find('.searchbox').each(function() {
+        var dropdownParent = $(document.body);
+        if ($(this).parents('.modal').length !== 0)
+            dropdownParent = $(this).parents('.modal');
+        $(this).select2({
+            width: 'style',
+            dropdownParent: dropdownParent
+        });
+    });
+});
+
 
 $(document).ready(function () {
     $('.searchbox').select2({width: 'style'});
