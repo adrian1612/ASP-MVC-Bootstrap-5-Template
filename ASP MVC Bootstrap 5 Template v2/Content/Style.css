@@ -1231,3 +1231,25 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
+
+dl {
+    display: grid;
+    grid-template-columns: max-content auto;
+    padding: 20px;
+    font-family: Calibri;
+}
+
+dt {
+    margin: 0 20px 0 0;
+    grid-column-start: 1;
+}
+
+dd:before{
+    content: ':   ';
+}
+
+dd {
+    grid-column-start: 2;
+    margin-bottom: 0;
+    border-bottom: 1px solid black;
+}
