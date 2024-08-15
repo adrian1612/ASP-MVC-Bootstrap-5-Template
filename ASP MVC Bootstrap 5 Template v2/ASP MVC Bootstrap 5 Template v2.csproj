@@ -456,6 +456,7 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\daterangepicker.css" />
     <Content Include="Content\duotone.css" />
     <Content Include="Content\duotone.min.css" />
     <Content Include="Content\fontawesome.css" />
@@ -864,6 +865,7 @@
     <Content Include="Scripts\DataTables\stateRestore.semanticui.js" />
     <Content Include="Scripts\DataTables\stateRestore.semanticui.min.js" />
     <Content Include="Scripts\DataTables\vfs_fonts.js" />
+    <Content Include="Scripts\daterangepicker.js" />
     <Content Include="Scripts\echarts\echarts.common.js.map" />
     <Content Include="Scripts\echarts\echarts.esm.js.map" />
     <Content Include="Scripts\echarts\echarts.js.map" />
