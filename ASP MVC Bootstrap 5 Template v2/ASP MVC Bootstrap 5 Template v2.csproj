@@ -453,6 +453,7 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\daterangepicker.css" />
     <Content Include="Content\duotone.css" />
     <Content Include="Content\duotone.min.css" />
     <Content Include="Content\fontawesome.css" />

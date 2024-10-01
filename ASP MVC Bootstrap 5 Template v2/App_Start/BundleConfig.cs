@@ -57,6 +57,7 @@ namespace ASP_MVC_Bootstrap_5_Template_v2
                       "~/Content/css/select2.css",
                       "~/Content/css/select2-bootstrap-5-theme.min.css",
                       "~/Content/all.css",
+                      "~/Content/daterangepicker.css",
                       "~/Content/toastr.css",
                       "~/Content/SignaturePad/jquery.signaturepad.css",
                       "~/Content/themes/base/jquery-ui.css",
