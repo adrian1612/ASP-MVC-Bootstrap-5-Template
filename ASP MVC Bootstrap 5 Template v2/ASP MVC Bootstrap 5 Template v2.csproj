@@ -861,6 +861,7 @@
     <Content Include="Scripts\DataTables\stateRestore.semanticui.js" />
     <Content Include="Scripts\DataTables\stateRestore.semanticui.min.js" />
     <Content Include="Scripts\DataTables\vfs_fonts.js" />
+    <Content Include="Scripts\daterangepicker.js" />
     <Content Include="Scripts\echarts\echarts.common.js.map" />
     <Content Include="Scripts\echarts\echarts.esm.js.map" />
     <Content Include="Scripts\echarts\echarts.js.map" />
