@@ -23,21 +23,38 @@ namespace ASP_MVC_Bootstrap_5_Template_v2.Classes
     }
 }
 
-public class JsonNetResult : JsonResult
-{
-    public new object Data { get; set; }
+public class StateResult : JsonResult {
+    public bool Status { get; set; }
+    public string Message { get; set; }
+    public object Content { get; set; }
 
-    public JsonNetResult()
-    {
+    private new StateResult Data { get; set; }
+
+    public void SetResult(bool Status, string Message, object Content = null) {
+        var self = this;
+        self.Status = Status;
+        self.Message = Message;
+        self.Content = Content;
+        self.Data = new StateResult(self);
     }
-    public override void ExecuteResult(ControllerContext context)
-    {
+
+    private StateResult(StateResult value) {
+        var self = this;
+        self.Status = value.Status;
+        self.Message = value.Message;
+        self.Content = value.Content;
+    }
+
+    public StateResult() {
+
+    }
+
+    public override void ExecuteResult(ControllerContext context) {
         HttpResponseBase response = context.HttpContext.Response;
         response.ContentType = "application/json";
         if (ContentEncoding != null)
             response.ContentEncoding = ContentEncoding;
-        if (Data != null)
-        {
+        if (Data != null) {
             JsonTextWriter writer = new JsonTextWriter(response.Output) { Formatting = Formatting.Indented };
             JsonSerializer serializer = JsonSerializer.Create(new JsonSerializerSettings());
             serializer.Serialize(writer, Data);
