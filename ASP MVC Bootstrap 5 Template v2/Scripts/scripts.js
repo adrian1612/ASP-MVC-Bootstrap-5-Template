@@ -104,6 +104,16 @@ $('body').on('shown.bs.modal', '.modal', function() {
     });
 });
 
+
+function stateResult(d) {
+    var output = { Status: d.Status, Message: d.Message, Content: d.Content };
+    if (output.Status == undefined) {
+        toastr.error('Session has been expired, please refresh the page.', 'Error', { "positionClass": "toast-top-center", "preventDuplicates": true });
+        return null;
+    }
+    return output;
+}
+
 $(document).ready(function () {
     $('.searchbox').select2({width: 'style'});
     $.each($('#sidebar-nav .nav-item .nav-link, #sidebar-nav .nav-item a'), function (i, item) {
