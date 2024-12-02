@@ -8,6 +8,76 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
     return new bootstrap.Popover(popoverTriggerEl)
 })
 
+ko.bindingHandlers.Timestamp = {
+    init: function (element, valueAccessor) {
+        const In = valueAccessor();
+        var value = ko.unwrap(In);
+        setInterval(() => { $(element).text(moment(value).fromNow()); }, 1000 * 1);
+    }
+}
+
+ko.bindingHandlers.GPS = {
+    init: function (element, valueAccessor, allBindings) {
+        const options = valueAccessor();
+        var enableMessage = allBindings.get('ShowGPSMessage') || false;
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((p) => {
+                var coord = p.coords;
+                if (ko.isObservable(options.Latitude)) {
+                    options.Latitude(coord.latitude);
+                }
+                if (ko.isObservable(options.Longitude)) {
+                    options.Longitude(coord.longitude);
+                }
+                if (enableMessage) {
+                    $(element).addClass('text-muted user-select-none text-center').text(`Your location: ${coord.latitude},${coord.longitude}`);
+                }
+            });
+            if (enableMessage) {
+                $(element).addClass('text-warning user-select-none text-center').text(`Please enable your device location`);
+            }
+        }
+
+    }
+}
+
+ko.bindingHandlers.daterangepicker = {
+    init: function (element, valueAccessor, allBindings) {
+        const options = valueAccessor();
+        var HourDuration = allBindings.get('HourDuration') || 8;
+        var Format = allBindings.get('Format') || 'M/DD hh:mm A';
+        //Startup value
+        if (ko.isObservable(options.startDate)) {
+            options.startDate(moment().startOf('hour').format('YYYY-MM-DD hh:mm a'));
+        }
+        if (ko.isObservable(options.endDate)) {
+            options.endDate(moment().startOf('hour').add(HourDuration, 'hour').format('YYYY-MM-DD hh:mm a'));
+        }
+        // Initialize the daterangepicker
+        $(element).daterangepicker({
+            timePicker: true,
+            startDate: moment().startOf('hour'),
+            endDate: moment().startOf('hour').add(HourDuration, 'hour'),
+            locale: {
+                format: Format
+            }
+        }, function (start, end) {
+            // Update observables on date selection
+            if (ko.isObservable(options.startDate)) {
+                options.startDate(start.format('YYYY-MM-DD hh:mm a'));
+            }
+            if (ko.isObservable(options.endDate)) {
+                options.endDate(end.format('YYYY-MM-DD hh:mm a'));
+            }
+        });
+
+        // Dispose of daterangepicker when the element is removed
+        ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
+            $(element).daterangepicker('destroy');
+        });
+    }
+};
+
 function TextEditor(field) {
     tinymce.init({
         selector: field,
