@@ -41,6 +41,19 @@ ko.bindingHandlers.GPS = {
     }
 }
 
+ko.bindingHandlers.dateFormat = {
+    init: function (element, valueAccessor, allBindings) {
+        var format = ko.unwrap(valueAccessor());
+        var date = allBindings.get('text');
+        if (date) {
+            $(element).text(moment(date).format(format));
+        } else {
+            $(element).text('Invalid Date');
+        }
+    }
+}
+
+
 ko.bindingHandlers.daterangepicker = {
     init: function (element, valueAccessor, allBindings) {
         const options = valueAccessor();
@@ -162,8 +175,8 @@ $(document).on('ajaxSend', () => {
     $('#spinner').show();
 });
 
-$('body').on('shown.bs.modal', '.modal', function() {
-    $(this).find('.searchbox').each(function() {
+$('body').on('shown.bs.modal', '.modal', function () {
+    $(this).find('.searchbox').each(function () {
         var dropdownParent = $(document.body);
         if ($(this).parents('.modal').length !== 0)
             dropdownParent = $(this).parents('.modal');
@@ -184,7 +197,7 @@ function stateResult(d) {
 }
 
 $(document).ready(function () {
-    $('.searchbox').select2({width: 'style'});
+    $('.searchbox').select2({ width: 'style' });
     $.each($('#sidebar-nav .nav-item .nav-link, #sidebar-nav .nav-item a'), function (i, item) {
         if ($(item).attr('href') == location.pathname.replace('/Create', '').replace(/\/Edit\/([\d]+)/, '') + location.search.replace('?Length=0', '')) {
             $(item).parent('li').parent('ul').addClass('show');
