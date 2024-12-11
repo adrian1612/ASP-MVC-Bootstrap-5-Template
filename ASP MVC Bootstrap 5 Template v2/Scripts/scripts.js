@@ -12,6 +12,11 @@ ko.bindingHandlers.Timestamp = {
     init: function (element, valueAccessor) {
         const In = valueAccessor();
         var value = ko.unwrap(In);
+        $(element).text(moment(value).fromNow());
+    },
+    update: function (element, valueAccessor) {
+        const In = valueAccessor();
+        var value = ko.unwrap(In);
         setInterval(() => { $(element).text(moment(value).fromNow()); }, 1000 * 1);
     }
 }
