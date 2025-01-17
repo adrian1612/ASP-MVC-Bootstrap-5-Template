@@ -35,6 +35,24 @@ ko.bindingHandlers.dataTable = {
     }
 };
 
+ko.bindingHandlers.fileUpload = {
+    init: function (element, valueAccessor, allBindings) {
+        var bindingProperty = valueAccessor();
+
+        var multiple = allBindings.get('multiple') || false;
+
+        element.addEventListener('change', (event) => {
+            var files = Array.from(event.target.files);
+            if (multiple) {
+                bindingProperty(files);
+            } else {
+                bindingProperty(files[0]);
+            }
+        });
+    },
+}
+
+
 ko.bindingHandlers.GPS = {
     init: function (element, valueAccessor, allBindings) {
         const options = valueAccessor();
@@ -109,6 +127,16 @@ ko.bindingHandlers.daterangepicker = {
         });
     }
 };
+
+function itemToFormData(item) {
+    var form = new FormData();
+    for (var key in item) {
+        if (item[key]) {
+            form.append(key, ko.unwrap(item[key]));
+        }
+    }
+    return form;
+}
 
 function TextEditor(field) {
     tinymce.init({
