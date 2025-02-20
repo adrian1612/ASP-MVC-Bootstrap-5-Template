@@ -95,30 +95,99 @@ ko.bindingHandlers.daterangepicker = {
     init: function (element, valueAccessor, allBindings) {
         const options = valueAccessor();
         var HourDuration = allBindings.get('HourDuration') || 8;
+        var endDateAuto = allBindings.get('EndDateAuto') || false;
         var Format = allBindings.get('Format') || 'M/DD hh:mm A';
+        var internalFormat = 'YYYY-MM-DD HH:mm';
         //Startup value
         if (ko.isObservable(options.startDate)) {
-            options.startDate(moment().startOf('hour').format('YYYY-MM-DD hh:mm a'));
+            if (options.startDate()) {
+                options.startDate(moment(options.startDate()).format(internalFormat));
+            } else {
+                options.startDate(moment().startOf('hour').format(internalFormat));
+            }
         }
+
         if (ko.isObservable(options.endDate)) {
-            options.endDate(moment().startOf('hour').add(HourDuration, 'hour').format('YYYY-MM-DD hh:mm a'));
+            if (options.endDate()) {
+                options.endDate(moment(options.endDate()).format(internalFormat));
+            } else {
+                if (endDateAuto) {
+                    options.endDate(moment().startOf('hour').add(HourDuration, 'hour').format(internalFormat));
+                }
+            }
         }
+
         // Initialize the daterangepicker
         $(element).daterangepicker({
             timePicker: true,
-            startDate: moment().startOf('hour'),
-            endDate: moment().startOf('hour').add(HourDuration, 'hour'),
+            startDate: options.startDate() ? moment(options.startDate()) : moment().startOf('hour'),
+            endDate: options.endDate() ? moment(options.endDate()) : endDateAuto ? moment().startOf('hour').add(HourDuration, 'hour') : null,
             locale: {
                 format: Format
             }
         }, function (start, end) {
             // Update observables on date selection
             if (ko.isObservable(options.startDate)) {
-                options.startDate(start.format('YYYY-MM-DD hh:mm a'));
+                options.startDate(start.format(internalFormat));
             }
             if (ko.isObservable(options.endDate)) {
-                options.endDate(end.format('YYYY-MM-DD hh:mm a'));
+                options.endDate(end.format(internalFormat));
             }
+        });
+
+        // Dispose of daterangepicker when the element is removed
+        ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
+            $(element).daterangepicker('destroy');
+        });
+    }
+};
+
+ko.bindingHandlers.timerangepicker = {
+    init: function (element, valueAccessor, allBindings) {
+        const options = valueAccessor();
+        var HourDuration = allBindings.get('HourDuration') || 8;
+        var endDateAuto = allBindings.get('EndDateAuto') || false;
+        var Format = allBindings.get('Format') || 'hh:mm A';
+        var internalFormat = 'YYYY-MM-DD HH:mm';
+        //Startup value
+        if (ko.isObservable(options.startTime)) {
+            if (options.startTime()) {
+                options.startTime(moment(options.startTime()).format(internalFormat));
+            } else {
+                options.startTime(moment().startOf('hour').format(internalFormat));
+            }
+        }
+
+        if (ko.isObservable(options.endTime)) {
+            if (options.endTime()) {
+                options.endTime(moment(options.endTime()).format(internalFormat));
+            } else {
+                if (endDateAuto) {
+                    options.endTime(moment().startOf('hour').add(HourDuration, 'hour').format(internalFormat));
+                }
+            }
+        }
+
+        // Initialize the daterangepicker
+        $(element).daterangepicker({
+            timePicker: true,
+            timePickerIncrement: 1,
+            timePickerSeconds: true,
+            startDate: moment(options.startTime()),
+            endDate: moment(options.endTime()),
+            locale: {
+                format: Format
+            }
+        }, function (start, end) {
+            // Update observables on date selection
+            if (ko.isObservable(options.startTime)) {
+                options.startTime(start.format(internalFormat));
+            }
+            if (ko.isObservable(options.endTime)) {
+                options.endTime(end.format(internalFormat));
+            }
+        }).on('show.daterangepicker', function (ev, picker) {
+            picker.container.find(".calendar-table").hide();
         });
 
         // Dispose of daterangepicker when the element is removed
