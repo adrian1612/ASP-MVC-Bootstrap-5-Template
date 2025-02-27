@@ -96,6 +96,7 @@ ko.bindingHandlers.daterangepicker = {
         const options = valueAccessor();
         var HourDuration = allBindings.get('HourDuration') || 8;
         var endDateAuto = allBindings.get('EndDateAuto') || false;
+        var timePicker = allBindings.get('timePicker') || true;
         var Format = allBindings.get('Format') || 'M/DD hh:mm A';
         var internalFormat = 'YYYY-MM-DD HH:mm';
         //Startup value
@@ -119,7 +120,7 @@ ko.bindingHandlers.daterangepicker = {
 
         // Initialize the daterangepicker
         $(element).daterangepicker({
-            timePicker: true,
+            timePicker: timePicker,
             startDate: options.startDate() ? moment(options.startDate()) : moment().startOf('hour'),
             endDate: options.endDate() ? moment(options.endDate()) : endDateAuto ? moment().startOf('hour').add(HourDuration, 'hour') : null,
             locale: {
