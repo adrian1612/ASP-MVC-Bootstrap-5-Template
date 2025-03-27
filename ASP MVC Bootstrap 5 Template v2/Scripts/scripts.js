@@ -27,10 +27,6 @@ ko.bindingHandlers.dataTable = {
             var options = ko.unwrap(valueAccessor()) || {};
             // Initialize DataTable and store instance
             var table = $(element).DataTable(options);
-            // Dispose handler
-            ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
-                if (table) table.destroy();
-            });
         }, 0);
     }
 };
